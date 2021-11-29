@@ -1,12 +1,19 @@
 package channel
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
 	"social/backend/constants"
 	"strconv"
 )
+
+var errorMsg errorResponse
+
+type errorResponse struct {
+	Error string `json:"error"`
+}
 
 type Handler struct {
 	Host string
@@ -29,6 +36,11 @@ func (instance *Handler) RetrieveLocalTimelines(local bool) (string, error) {
 	strRes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", errors.New("failed retrieving localtimelines. " + err.Error())
+	}
+	if err := json.Unmarshal(strRes, &errorMsg); err == nil {
+		if errorMsg.Error != "" {
+			return "", errors.New(errorMsg.Error)
+		}
 	}
 	return string(strRes), nil
 }
