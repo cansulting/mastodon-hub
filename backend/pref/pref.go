@@ -7,7 +7,8 @@ import (
 )
 
 type Data struct {
-	Channels []string `json:"channels"`
+	Channels    []string         `json:"channels"`
+	ChannelKeys map[string]*Keys `json:"keys"`
 }
 
 func getPath() string {
@@ -17,6 +18,7 @@ func getPath() string {
 func CreateNew() *Data {
 	new := &Data{}
 	new.Channels = make([]string, 0, 4)
+	new.ChannelKeys = make(map[string]*Keys)
 	return new
 }
 
@@ -65,6 +67,14 @@ func (instance *Data) RemoveChannel(channel string) {
 	if i >= 0 {
 		instance.Channels = append(instance.Channels[:i], instance.Channels[i+1:]...)
 	}
+}
+
+func (instance *Data) AddChannelKeys(keys *Keys) {
+	instance.ChannelKeys[keys.Channel] = keys
+}
+
+func (instance *Data) GetChannelKeys(channel string) *Keys {
+	return instance.ChannelKeys[channel]
 }
 
 func (instance *Data) ToJson() []byte {

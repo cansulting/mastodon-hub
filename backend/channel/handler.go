@@ -1,3 +1,5 @@
+/// this handles the channel
+
 package channel
 
 import (
@@ -6,6 +8,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"social/backend/constants"
+	"social/backend/pref"
+	"social/backend/utils"
 	"strconv"
 )
 
@@ -16,7 +20,8 @@ type errorResponse struct {
 }
 
 type Handler struct {
-	Host string
+	Host        string
+	Client 		*mas
 }
 
 func createHandler(host string) *Handler {
@@ -25,10 +30,14 @@ func createHandler(host string) *Handler {
 	}
 }
 
+func (instance *Handler) Authenticate(username string, password string, prefDat *pref.Keys) (string, error) {
+	utils.Authenticate(instance.Host, username, password, prefDat)
+}
+
 /// use to load timeline
 /// @local true if only load the local timeline
 func (instance *Handler) RetrieveLocalTimelines(local bool) (string, error) {
-	url := getUrlFrom(instance.Host, constants.TIMELINES_ENDPOINT, "local="+strconv.FormatBool(local))
+	url := utils.ConstructUrl(instance.Host, constants.TIMELINES_ENDPOINT, "local="+strconv.FormatBool(local))
 	resp, err := http.Get(url)
 	if err != nil {
 		return "", errors.New("failed retrieving localtimelines. " + err.Error())
