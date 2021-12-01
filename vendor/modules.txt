@@ -1,0 +1,34 @@
+# github.com/cansulting/elabox-system-tools v0.0.0-20210615101549-dd55d6388aac => ../elabox-system-tools
+## explicit
+github.com/cansulting/elabox-system-tools/foundation/app
+github.com/cansulting/elabox-system-tools/foundation/app/data
+github.com/cansulting/elabox-system-tools/foundation/app/protocol
+github.com/cansulting/elabox-system-tools/foundation/app/rpc
+github.com/cansulting/elabox-system-tools/foundation/constants
+github.com/cansulting/elabox-system-tools/foundation/errors
+github.com/cansulting/elabox-system-tools/foundation/event
+github.com/cansulting/elabox-system-tools/foundation/event/data
+github.com/cansulting/elabox-system-tools/foundation/event/protocol
+github.com/cansulting/elabox-system-tools/foundation/event/socket
+github.com/cansulting/elabox-system-tools/foundation/logger
+github.com/cansulting/elabox-system-tools/foundation/path
+github.com/cansulting/elabox-system-tools/foundation/perm
+github.com/cansulting/elabox-system-tools/foundation/system
+# github.com/gorilla/websocket v1.4.2
+github.com/gorilla/websocket
+# github.com/graarh/golang-socketio v0.0.0-20170510162725-2c44953b9b5f
+github.com/graarh/golang-socketio
+github.com/graarh/golang-socketio/protocol
+github.com/graarh/golang-socketio/transport
+# github.com/mattn/go-mastodon v0.0.4
+## explicit
+github.com/mattn/go-mastodon
+# github.com/mitchellh/mapstructure v1.4.2
+github.com/mitchellh/mapstructure
+# github.com/rs/zerolog v1.25.0
+github.com/rs/zerolog
+github.com/rs/zerolog/internal/cbor
+github.com/rs/zerolog/internal/json
+# github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80
+github.com/tomnomnom/linkheader
+# github.com/cansulting/elabox-system-tools => ../elabox-system-tools
